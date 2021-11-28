@@ -1,0 +1,45 @@
+SSH(Secure Shell) es el  protocolo criptografico cuya principal función es el acceso remoto a un
+servidor por medio de un canal seguro en el que toda la información está cifrada. OpenSSH es la
+herramienta mas utilizada y es a la vez libre y abierta.
+Como todo programa en UNIX, el mismo deja la información de log en el directorio /var/log.
+
+Nos han pasado un archivo de log de OpenSSH el cual tenemos que analizar. A continuación tenemos dos
+ejemplos de las entradas que podemos encontrar en dicho archivo:
+
+
+Dec 10 06:55:48 LabSZ sshd[24200]: Failed password for invalid user webmaster from 173.234.31.186 port 38926 ssh2
+Dec 10 11:04:02 LabSZ sshd[25476]: Failed password for root from 183.62.140.253 port 56779 ssh2
+
+La primera entrada corresponde a un login invalido por usuario inválido y la segunda por password
+invalida.  Para nuestro analisis debemos completar un script de bash interactivo(script.sh) que lea
+el contenido de un archivo de log de OpenSSH(ssh.log)
+Y haga lo siguuiente:
+
+   -Solicitar al usuario de nuestro script un nombre de usuario por entrada estandard(ej root)
+   -Del usuario ingresado por teclado, detectar accesos fallidos por password inválida(ej. la segunda
+	entrada del ejemplo anterior).
+   -Reportar por pantalla la direccion IP y la hora en que ocurrió cada acceso por password inválida
+	por parte del usuario ingresado como parámetro.
+   -Si no hay accesos por invalidos por parte del usuario ingresado solo informar un mensaje que
+	indique que no encontraron accesos por clave inválida.
+   -Reportar el total de accesos fallidos por password inválida(si los hubiera).
+   -Si el usuario del script ingresa Enter, simplemente finalizar el script.
+
+La estructura del reporte por pantalla es la siguiente:
+
+ip1 Hora1
+ip2 Hora2
+ip1 Hora3
+Total de accesos inválidos: 3
+
+Por ejemplo si el usuario del script ingresa "martin" y del archivo detectamos solo una entrada como
+la siguiente:
+
+Dec 10 07:51:20 LabSZ sshd[24326]: Failed password for martin from 195.154.37.122 port 59266 ssh2
+
+Nuestro reporte sera el siguiente:
+
+195.154.37.122  07:51:20
+Total de accesos inválidos: 1
+
+Es importante el orden: se reporta la IP y  la hora en ese orden para cada acceso fallido por clave inválida y finalmente el total

@@ -1,0 +1,58 @@
+Se tiene un archivo con el listado de Información de los Aeropuertos de la República Argentina (archivo adjunto aeropuertos_detalle.csv) con la siguiente Información:
+En la primer fila se encuentra el encabezado con el título de las columnas(separados por ";"). Por ejemplo:
+
+local;oaci;iata;tipo;denominacion;coordenadas;latitud;longitud;elev;uom_elev;ref;distancia_ref;direccion_ref;condicion;control;region;fir;uso;trafico;sna;concesionado;provincia;inhab
+
+Luego, cada fila del archivo contiene la lista de valores para cada columna también separados por punto y coma(;).
+
+Su script va a recibir los siguientes parámetros:
+1) El primero es un número de FILA(siempre debe ser mayor a 1, ya que en la primer fila tenemos el título de las columnas, y menor a la cantidad de filas del archivo).
+2) El segundo es un número de COLUMNA(siempre debe ser mayor a 0).
+
+Su script debe devolver 3 valores(en el orden que se indica):
+-El valor de la fila indicada en el primer parámetro para la columna indicada en el segundo parámetro.
+-El título de la columna(lo obtenemos de la primer fila).
+-La cantidad de filas que poseen el valor indicado en la columna indicada..
+
+Ejemplos:
+
+1) Si recibo 10 y 4 debo devolver:
+Aeródromo
+tipo
+566
+
+Explicación:
+
+"Aeródromo", es el valor de la décima fila(primer parámetro) para la columna 4 que es tipo(segundo parámetro,contando desde el encabezado que es la primer fila).
+
+"tipo", es el título de la cuarta columna(lo encontramos en la primer fila)
+El valor "aeródromo" para la columna "tipo" se repite en 566 filas del archivo(solo para la columna tipo).
+
+2) Si recibo 2 y 1 debo imprimir
+ACB
+local
+1
+
+Explicación:
+
+
+"ACB", es el valor de la 2da fila(contando desde el encabezado que es la primer fila)
+
+"local", es el valor de la primer fila(lo encontramos en la primer fila)
+
+El valor "ACB" para la columna "local" se repite 1 veces a lo largo del archivo.
+
+3) Si recibo 3 0 , debo imprimir
+INVALID PARAMETERS
+
+Explicación:
+El número de fila y columna deben ser mayor a 0
+
+Importante: Imprimir, Cada valor resultante en una linea separada.
+
+Es imperativo y OBLIGATORIO que su script retorne los valores en el orden indicado y como se detallo anteriormente.
+
+No imprima cosas innecesarias por pantalla. En tal caso el resultado se considera inválido.
+
+Debe validar la correctitud de los parámetros y si los mismos son inválidos su script simplemente debe imprimir en pantalla "INVALID PARAMETERS"(textual, no cambie el mensaje
+de error) y finalizar el error con una condición de finalización como corresponde a todo proceso bash que finaliza con error.
